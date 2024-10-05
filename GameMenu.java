@@ -9,11 +9,13 @@ public class GameMenu extends JFrame {
         setSize(300, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        
 
         showMainMenu();
     }
 
     private void showMainMenu() {
+        Music.playMusic("background.wav");
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
@@ -78,12 +80,12 @@ public class GameMenu extends JFrame {
         JLabel chooseGameLabel = new JLabel("Choose a game:");
         panel.add(chooseGameLabel);
 
-        JButton game1Button = new JButton("Snakes and Ladders");
-        game1Button.addActionListener(e -> showGameOptions("Snakes and Ladders"));
+        JButton game1Button = new JButton("Traps and Flowers");
+        game1Button.addActionListener(e -> TrapshowGameOptions("Traps and Flowers"));
         panel.add(game1Button);
 
-        JButton game2Button = new JButton("Flappy Bird");
-        game2Button.addActionListener(e -> showGameOptions("Flappy Bird"));
+        JButton game2Button = new JButton("Flappy Bat");
+        game2Button.addActionListener(e -> showGameOptions("Flappy Bat"));
         panel.add(game2Button);
 
         JButton backButton = new JButton("Back");
@@ -94,14 +96,13 @@ public class GameMenu extends JFrame {
         revalidate();
         repaint();
     }
-
     private void showGameOptions(String gameTitle) {
         getContentPane().removeAll();
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(3, 1));
 
         JButton startButton = new JButton("Start");
-        startButton.addActionListener(e -> startGame(gameTitle));
+        startButton.addActionListener(e -> FlapstartGame(gameTitle));
         panel.add(startButton);
 
         JButton tutorialButton = new JButton("Tutorial");
@@ -117,10 +118,37 @@ public class GameMenu extends JFrame {
         repaint();
     }
 
-    private void startGame(String gameTitle) {
-        JOptionPane.showMessageDialog(this, gameTitle + " Game Started!");
+    private void TrapshowGameOptions(String gameTitle) {
+        getContentPane().removeAll();
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 1));
+
+        JButton startButton = new JButton("Start");
+        startButton.addActionListener(e -> TrapstartGame(gameTitle));
+        panel.add(startButton);
+
+        JButton tutorialButton = new JButton("Tutorial");
+        tutorialButton.addActionListener(e -> showTutorial(gameTitle));
+        panel.add(tutorialButton);
+
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(e -> showPlayMenu());
+        panel.add(backButton);
+
+        add(panel);
+        revalidate();
+        repaint();
     }
 
+    private void FlapstartGame(String gameTitle) {
+        JOptionPane.showMessageDialog(this, gameTitle + " Game Started!");
+        new FlappyBat();
+    }
+
+    private void TrapstartGame(String gameTitle) {
+        JOptionPane.showMessageDialog(this, gameTitle + " Game Started!");
+        new TrapsAndFlowers();
+    }
 private void showTutorial(String gameTitle) {
     JFrame tutorialFrame = new JFrame(gameTitle + " Tutorial");
     tutorialFrame.setSize(400, 300);

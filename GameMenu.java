@@ -85,8 +85,8 @@ public class GameMenu extends JFrame {
         game1Button.addActionListener(e -> TrapshowGameOptions("Traps and Flowers"));
         panel.add(game1Button);
 
-        JButton game2Button = new JButton("Birds & Bees");
-        game2Button.addActionListener(e -> showGameOptions("Birds & Bees"));
+        JButton game2Button = new JButton("Bats & Bees");
+        game2Button.addActionListener(e -> showGameOptions("Bats & Bees"));
         panel.add(game2Button);
 
         JButton backButton = new JButton("Back");

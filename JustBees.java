@@ -180,7 +180,7 @@ public void actionPerformed(ActionEvent e){
             togglePause();  // Resume the game
             Window window = SwingUtilities.getWindowAncestor(pauseMenu);
 			if(window!=null){
-				window.dispose()
+				window.dispose();
 			}
         });
     

@@ -1,3 +1,4 @@
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,7 @@ public class GameMenu extends JFrame {
     }
 
     private void showMainMenu() {
-        Music.playMusic("background.wav");
+        Music.playMusic("8bit.wav");
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
@@ -84,8 +85,8 @@ public class GameMenu extends JFrame {
         game1Button.addActionListener(e -> TrapshowGameOptions("Traps and Flowers"));
         panel.add(game1Button);
 
-        JButton game2Button = new JButton("Flappy Bat");
-        game2Button.addActionListener(e -> showGameOptions("Flappy Bat"));
+        JButton game2Button = new JButton("Birds & Bees");
+        game2Button.addActionListener(e -> showGameOptions("Birds & Bees"));
         panel.add(game2Button);
 
         JButton backButton = new JButton("Back");
@@ -117,7 +118,7 @@ public class GameMenu extends JFrame {
         revalidate();
         repaint();
     }
-
+    // a method that calls the Traps And Flowers Game
     private void TrapshowGameOptions(String gameTitle) {
         getContentPane().removeAll();
         JPanel panel = new JPanel();
@@ -142,7 +143,9 @@ public class GameMenu extends JFrame {
 
     private void FlapstartGame(String gameTitle) {
         JOptionPane.showMessageDialog(this, gameTitle + " Game Started!");
-        new FlappyBat();
+        try{new App();}
+        catch(Exception e){};
+        
     }
 
     private void TrapstartGame(String gameTitle) {
